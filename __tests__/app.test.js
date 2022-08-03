@@ -49,15 +49,13 @@ describe("GET /api/articles/:article_id", () => {
       .get("/api/articles/1")
       .expect(200)
       .then((response) => {
-        expect(Object.keys(response.body)).toEqual([
-          "article_id",
-          "title",
-          "topic",
-          "author",
-          "body",
-          "created_at",
-          "votes",
-        ]);
+        expect(response.body).toHaveProperty("article_id");
+        expect(response.body).toHaveProperty("title");
+        expect(response.body).toHaveProperty("topic");
+        expect(response.body).toHaveProperty("author");
+        expect(response.body).toHaveProperty("body");
+        expect(response.body).toHaveProperty("created_at");
+        expect(response.body).toHaveProperty("votes");
       });
   });
   it("should when passed an incorrect id return a 404 error", () => {
