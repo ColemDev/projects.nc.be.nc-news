@@ -31,19 +31,7 @@ describe("status 404 error - not found", () => {
       .get("/api/not-a-path")
       .expect(404)
       .then((response) => {
-        console.log(response, "test");
         expect(response.body.msg).toBe("route not found");
       });
   });
 });
-
-//NOTES WITH KYLE - I'll insert this into my Workflow Template
-//should recieve an article object 200
-//object returned should contain the following properties
-//get api/articles/:articleID , fetchArticleID
-//controller fetchArticleID >>> grab he article ID froom the req url
-//model selectArticleID db.query $1, [articleID] (this is the format)
-//return rows
-//back in controller >> return status code and the body
-//back at test and checks status  and the expect checks.... conditions
-//CONSOLE LOG where I am (where the log is coming from,), data form (what is the type of data (json, object, array, numbers etc), what does it read like, what structure does it have eg if object,what properties), what it looks like....(to string?) what's the response, what's the "data ID",

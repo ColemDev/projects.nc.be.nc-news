@@ -5,4 +5,3 @@ exports.selectTopics = (endpointRequest) => {
     return data.rows;
   });
 };
-//};
