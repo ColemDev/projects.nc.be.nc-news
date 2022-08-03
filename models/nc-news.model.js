@@ -14,7 +14,7 @@ exports.selectArticleById = (selectedArticle_id) => {
       if (article === undefined) {
         return Promise.reject({
           status: 404,
-          msg: `article doesn't exist yet for article_id: ${selectedArticle_id}`,
+          msg: `article not found`,
         });
       } else {
         return article;

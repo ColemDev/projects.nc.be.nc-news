@@ -63,9 +63,7 @@ describe("GET /api/articles/:article_id", () => {
       .get("/api/articles/45")
       .expect(404)
       .then((response) => {
-        expect(response.body.msg).toBe(
-          "article doesn't exist yet for article_id: 45"
-        );
+        expect(response.body.msg).toBe("article not found");
       });
   });
 });
