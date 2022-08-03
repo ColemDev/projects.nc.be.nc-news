@@ -6,7 +6,11 @@ app.use(express.json());
 
 app.get("/api/topics", getTopics);
 
+app.use("/*", (req, res) => {
+  res.status(404).send({ msg: "route not found" });
+});
+
 app.use((err, req, res, next) => {
-  console.log(err);
+  console.log(err, "app.use error");
 });
 module.exports = app;
