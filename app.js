@@ -23,7 +23,6 @@ app.use((err, req, res, next) => {
       .status(400)
       .send({ msg: "400 Bad Request: incorrect type: vote must be a number" });
   } else {
-    //if (err.code === "23502")
     if (err.status && err.msg) {
       res.status(err.status).send({ msg: err.msg });
     } else {

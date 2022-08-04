@@ -85,7 +85,6 @@ describe.only("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(200)
       .then((response) => {
-        console.log("newVote test", response.body);
         expect(response.body.votes).toBe(4);
       });
   });
@@ -96,7 +95,6 @@ describe.only("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(200)
       .then((response) => {
-        console.log("newVote test", response.body);
         expect(response.body.votes).toBe(45);
       });
   });
@@ -107,7 +105,6 @@ describe.only("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(200)
       .then((response) => {
-        console.log("newVote test", response.body);
         expect(response.body.article_id).toBe(6);
         expect(response.body.title).toBe("A");
         expect(response.body.topic).toBe("mitch");
@@ -127,10 +124,6 @@ describe.only("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(400)
       .then((response) => {
-        console.log(
-          "newVote test unhappy path: wrong data type ",
-          response.body.msg
-        );
         expect(response.body.msg).toBe(
           "400 Bad Request: incorrect type: vote must be a number"
         );
