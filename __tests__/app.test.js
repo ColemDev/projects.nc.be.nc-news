@@ -67,7 +67,7 @@ describe("GET /api/articles/:article_id", () => {
       });
   });
 });
-describe.only("PATCH /api/articles/:article_id", () => {
+describe("PATCH /api/articles/:article_id", () => {
   it("should accept an object in the form { inc_votes: >>insert newVote number here<< }and respond with an object", () => {
     const newVote = { inc_votes: 1 };
     return request(app)
