@@ -4,6 +4,7 @@ const {
   getTopics,
   getArticleById,
   updateArticleVotes,
+  getUsers,
 } = require("./controllers/nc_news.controller");
 
 app.use(express.json());

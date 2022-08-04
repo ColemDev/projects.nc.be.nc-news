@@ -75,7 +75,7 @@ describe("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(200)
       .then((response) => {
-        expect(response.body).toBeInstanceOf(Object);
+        expect(response.body.updatedArticle).toBeInstanceOf(Object);
       });
   });
   it("if the inc_votes value is positive, it would increment the votes property by that much", () => {
@@ -85,7 +85,7 @@ describe("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(200)
       .then((response) => {
-        expect(response.body.votes).toBe(4);
+        expect(response.body.updatedArticle.votes).toBe(4);
       });
   });
   it("if the inc_votes value is a negative number, it would decrement the votes property by that much", () => {
@@ -95,7 +95,7 @@ describe("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(200)
       .then((response) => {
-        expect(response.body.votes).toBe(45);
+        expect(response.body.updatedArticle.votes).toBe(45);
       });
   });
   it("should when passed the newVote, return the updated article", () => {
@@ -105,16 +105,17 @@ describe("PATCH /api/articles/:article_id", () => {
       .send(newVote)
       .expect(200)
       .then((response) => {
-        expect(response.body.article_id).toBe(6);
-        expect(response.body.title).toBe("A");
-        expect(response.body.topic).toBe("mitch");
-        expect(response.body).toHaveProperty("author");
-        expect(response.body.author).toBe("icellusedkars");
-        expect(response.body).toHaveProperty("body");
-        expect(response.body.body).toBe("Delicious tin of cat food");
-        expect(response.body).toHaveProperty("created_at");
-        //too complicated for me to set up a program to figure out the time stamp so I'm settling for it having the proberty right now.
-        expect(response.body.votes).toBe(42);
+        expect(response.body.updatedArticle.article_id).toBe(6);
+        expect(response.body.updatedArticle.title).toBe("A");
+        expect(response.body.updatedArticle.topic).toBe("mitch");
+        expect(response.body.updatedArticle).toHaveProperty("author");
+        expect(response.body.updatedArticle.author).toBe("icellusedkars");
+        expect(response.body.updatedArticle).toHaveProperty("body");
+        expect(response.body.updatedArticle.body).toBe(
+          "Delicious tin of cat food"
+        );
+        expect(response.body.updatedArticle).toHaveProperty("created_at");
+        expect(response.body.updatedArticle.votes).toBe(42);
       });
   });
   it('should when passed a vote with the incorrect data type return a 400 bad request and the message "incorrect type: vote must be a number', () => {

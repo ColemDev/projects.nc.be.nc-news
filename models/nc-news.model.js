@@ -1,6 +1,6 @@
 const db = require("../db/connection");
 
-exports.selectTopics = (endpointRequest) => {
+exports.selectTopics = () => {
   return db.query(`SELECT * FROM topics;`).then((data) => {
     return data.rows;
   });
@@ -27,7 +27,6 @@ exports.updateTableVotes = (article_id, inc_votes) => {
       [inc_votes, article_id]
     )
     .then(({ rows }) => {
-      console.log("models votes rows", rows);
-      return rows[0];
+      return { updatedArticle: rows[0] };
     });
 };
