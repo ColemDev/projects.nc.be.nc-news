@@ -1,5 +1,4 @@
 const db = require("../db/connection");
-const { articleData } = require("../db/data/test-data");
 
 exports.selectTopics = (endpointRequest) => {
   return db.query(`SELECT * FROM topics;`).then((data) => {
@@ -19,5 +18,16 @@ exports.selectArticleById = (selectedArticle_id) => {
       } else {
         return article;
       }
+    });
+};
+exports.updateTableVotes = (article_id, inc_votes) => {
+  return db
+    .query(
+      "UPDATE articles SET votes = votes + $1 WHERE article_id = $2 RETURNING *;",
+      [inc_votes, article_id]
+    )
+    .then(({ rows }) => {
+      console.log("models votes rows", rows);
+      return rows[0];
     });
 };
