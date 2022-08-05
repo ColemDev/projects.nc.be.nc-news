@@ -29,8 +29,8 @@ exports.updateArticleVotes = (req, res, next) => {
   const { article_id } = req.params;
 
   updateTableVotes(article_id, inc_votes)
-    .then((upDatedArticle) => {
-      res.status(200).send(upDatedArticle);
+    .then((updatedArticle) => {
+      res.status(200).send(updatedArticle);
     })
     .catch((err) => {
       next(err);
