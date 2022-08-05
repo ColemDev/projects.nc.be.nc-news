@@ -9,15 +9,13 @@ exports.selectArticleById = (selectedArticle_id) => {
   return db
     .query(`SELECT *FROM articles WHERE article_id = $1;`, [selectedArticle_id])
     .then(({ rows }) => {
-      const article = rows[0];
-      if (article === undefined) {
+      if (rows.length === 0) {
         return Promise.reject({
           status: 404,
-          msg: `article not found`,
+          msg: `id does not exist`,
         });
-      } else {
-        return article;
       }
+      return rows[0];
     });
 };
 exports.updateTableVotes = (article_id, inc_votes) => {
@@ -27,6 +25,12 @@ exports.updateTableVotes = (article_id, inc_votes) => {
       [inc_votes, article_id]
     )
     .then(({ rows }) => {
-      return { updatedArticle: rows[0] };
+      if (rows.length === 0) {
+        return Promise.reject({
+          status: 404,
+          msg: `id does not exist`,
+        });
+      }
+      return rows[0];
     });
 };

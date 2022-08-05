@@ -2,7 +2,6 @@ const {
   selectTopics,
   selectArticleById,
   updateTableVotes,
-  selectUsers,
 } = require("../models/nc-news.model.js");
 
 exports.getTopics = (req, res, next) => {
