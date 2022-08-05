@@ -2,6 +2,7 @@ const {
   selectTopics,
   selectArticleById,
   updateTableVotes,
+  selectUsers,
 } = require("../models/nc-news.model.js");
 
 exports.getTopics = (req, res, next) => {
@@ -31,6 +32,15 @@ exports.updateArticleVotes = (req, res, next) => {
   updateTableVotes(article_id, inc_votes)
     .then((updatedArticle) => {
       res.status(200).send(updatedArticle);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+exports.getUsers = (req, res, next) => {
+  selectUsers()
+    .then((users) => {
+      res.status(200).send({ users });
     })
     .catch((err) => {
       next(err);

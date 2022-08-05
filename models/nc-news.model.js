@@ -34,3 +34,8 @@ exports.updateTableVotes = (article_id, inc_votes) => {
       return rows[0];
     });
 };
+exports.selectUsers = () => {
+  return db.query(`SELECT * FROM users;`).then((data) => {
+    return data.rows;
+  });
+};
