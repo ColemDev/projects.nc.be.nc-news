@@ -150,4 +150,29 @@ describe("PATCH /api/articles/:article_id", () => {
         expect(response.body.msg).toBe(`id does not exist`);
       });
   });
+  describe("GET users", () => {
+    it("should respond with an array of objects and a 200 code", () => {
+      return request(app)
+        .get("/api/users")
+        .expect(200)
+        .then((response) => {
+          expect(response.body.users).toBeInstanceOf(Array);
+          response.body.users.forEach((user) => {
+            expect(user).toBeInstanceOf(Object);
+          });
+        });
+    });
+    it("each array should contain the properties of username, name, avatar_url", () => {
+      return request(app)
+        .get("/api/users")
+        .expect(200)
+        .then((response) => {
+          response.body.users.forEach((user) => {
+            expect(user.hasOwnProperty("username")).toBe(true);
+            expect(user.hasOwnProperty("name")).toBe(true);
+            expect(user.hasOwnProperty("avatar_url")).toBe(true);
+          });
+        });
+    });
+  });
 });

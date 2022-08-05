@@ -4,6 +4,7 @@ const {
   getTopics,
   getArticleById,
   updateArticleVotes,
+  getUsers,
 } = require("./controllers/nc-news.controller");
 
 app.use(express.json());
@@ -11,6 +12,8 @@ app.use(express.json());
 app.get("/api/topics", getTopics);
 
 app.get("/api/articles/:article_id", getArticleById);
+
+app.get("/api/users", getUsers);
 
 app.patch("/api/articles/:article_id", updateArticleVotes);
 //!keep the use blocks below the other endpoint calls to ensure all further console logs in the chain are functional!
