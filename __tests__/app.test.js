@@ -44,7 +44,7 @@ describe("GET /api/articles/:article_id", () => {
         expect(response.body).toBeInstanceOf(Object);
       });
   });
-  it("the object returned should contain the following keys: title,topic, author, body, created_at, votes", () => {
+  it("the object returned should contain the following keys: title,topic, author, body, created_at, votes. UPDATE: The object should now also have the property 'comment_count' which is the totally count of comments listed in the comments table that match the selected id", () => {
     return request(app)
       .get("/api/articles/1")
       .expect(200)
@@ -56,6 +56,18 @@ describe("GET /api/articles/:article_id", () => {
         expect(response.body).toHaveProperty("body");
         expect(response.body).toHaveProperty("created_at");
         expect(response.body).toHaveProperty("votes");
+        //UPDATE: Tests for new "comment_count" property to be found here.
+        expect(response.body).toHaveProperty("comment_count");
+        expect(response.body.comment_count).toBe(11);
+      });
+  });
+  it("when an id does not have any comments the default is 0", () => {
+    return request(app)
+      .get("/api/articles/2")
+      .expect(200)
+      .then((response) => {
+        expect(response.body.article_id).toBe(2);
+        expect(response.body.comment_count).toBe(0);
       });
   });
   it("should when passed an incorrect id return a 404 error", () => {
