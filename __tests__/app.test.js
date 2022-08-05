@@ -156,7 +156,6 @@ describe("PATCH /api/articles/:article_id", () => {
         .get("/api/users")
         .expect(200)
         .then((response) => {
-          console.log("test for users get: is array?", response.body);
           expect(response.body.users).toBeInstanceOf(Array);
           response.body.users.forEach((user) => {
             expect(user).toBeInstanceOf(Object);
