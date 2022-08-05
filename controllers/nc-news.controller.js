@@ -1,6 +1,7 @@
 const {
   selectTopics,
   selectArticleById,
+  updateTableVotes,
 } = require("../models/nc-news.model.js");
 
 exports.getTopics = (req, res, next) => {
@@ -18,6 +19,18 @@ exports.getArticleById = (req, res, next) => {
   selectArticleById(article_id)
     .then((article) => {
       res.status(200).send(article);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+exports.updateArticleVotes = (req, res, next) => {
+  const { inc_votes } = req.body;
+  const { article_id } = req.params;
+
+  updateTableVotes(article_id, inc_votes)
+    .then((updatedArticle) => {
+      res.status(200).send(updatedArticle);
     })
     .catch((err) => {
       next(err);
