@@ -6,7 +6,9 @@
     "description": "serves an array of all topics",
     "queries": [],
     "exampleResponse": {
-      "topics": [{ "slug": "football", "description": "Footie!" }]
+      "topics": [
+        { "description": "The man, the Mitch, the legend", "slug": "mitch" }
+      ]
     }
   },
   "GET /api/articles": {
@@ -19,9 +21,109 @@
           "topic": "cooking",
           "author": "weegembump",
           "body": "Text from the article..",
-          "created_at": 1527695953341
+          "created_at": 1527695953341,
+          "votes": 0
         }
       ]
     }
+  },
+  "GET /api/articles/:article_id": {
+    "description": "serves an article object with the given article_id",
+    "queries": [],
+    "exampleResponse": {
+      "article": [
+        {
+          "article_id": 1,
+          "title": "Living in the shadow of a great man",
+          "topic": "mitch",
+          "author": "butter_bridge",
+          "body": "I find this existence challenging",
+          "created_at": 1594329060000,
+          "votes": 100
+        }
+      ]
+    }
+  },
+  "GET /api/articles/:article_id/comments": {
+    "description": "serves an array of comments for the given article_id",
+    "queries": ["article_id"],
+    "exampleResponse": {
+      "comments": [
+        {
+          "comment_id": 17,
+          "body": "The owls are not what they seem.",
+          "votes": 20,
+          "author": "icellusedkars",
+          "created_at": 1584205320000
+        },
+        {
+          "comment_id": 1,
+          "body": "Oh, I've got compassion running out of my nose, pal! I'm the Sultan of Sentiment!",
+          "votes": 16,
+          "author": "butter_bridge",
+          "created_at": 1586179020000
+        }
+      ]
+    }
+  },
+  "GET /api/users": {
+    "description": "serves an array of all users",
+    "queries": [],
+    "exampleResponse": {
+      "users": [
+        {
+          "username": "butter_bridge",
+          "name": "jonny",
+          "avatar_url": "https://someuserspicture1.jpg"
+        },
+        {
+          "username": "icellusedkars",
+          "name": "sam",
+          "avatar_url": "https://someuserspicture2.jpg"
+        }
+      ]
+    }
+  },
+  "POST /api/articles/:article_id/comments": {
+    "description": " posts a new comment to the given article_id and returns the posted comment",
+    "requestExample": {
+      "username": "butter_bridge",
+      "body": "This is a new comment"
+    },
+    "exampleResponse": {
+      "comment": [
+        {
+          "comment_id": "19",
+          "body": "This is a new comment",
+          "votes": 0,
+          "author": "butter_bridge",
+          "created_at": 1594329060000
+        }
+      ]
+    }
+  },
+  "PATCH /api/articles/:article_id": {
+    "description": "Increments or decrements the votes of the given article_id by the given amount and returns the updated article",
+    "requestExample": {
+      "inc_votes": 1
+    },
+    "exampleResponse": {
+      "updatedArticle": [
+        {
+          "article_id": 1,
+          "title": "Living in the shadow of a great man",
+          "topic": "mitch",
+          "author": "butter_bridge",
+          "body": "I find this existence challenging",
+          "created_at": 1594329060000,
+          "votes": 101
+        }
+      ]
+    }
+  },
+  "DELETE /api/comments/:comment_id": {
+    "description": " deletes the comment with the given comment_id",
+    "queries": [],
+    "exampleResponse": {}
   }
 }
