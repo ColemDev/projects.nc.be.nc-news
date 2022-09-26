@@ -1,3 +1,4 @@
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const {
@@ -40,6 +41,8 @@ app.patch("/api/articles/:article_id", updateArticleVotes);
 app.delete("/api/comments/:comment_id", deleteCommentById);
 
 //!!! ::caution:: keep the "use" blocks below the other endpoint calls to ensure all further console logs in the chain are functional
+app.use(cors());
+
 app.use("/*", (req, res) => {
   res.status(404).send({ msg: "route not found" });
 });
