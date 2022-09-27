@@ -1,42 +1,87 @@
-## Instructions for setting up the environment variables for the project
+# Project Title
 
-In order to connect to the SQL database, you must have make two .env files in your project directory.
+A summary of what the project is
 
-To make this easier for you the code you need is in quotation marks.
+## Getting Started
 
-Simply highlight the code between the quotation marks and copy-paste the following in to the correct file.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Step 1: In the project directory folder, create a new file and call it:
+### Prerequisites
 
-".env.development"
+What things you need to install the software and how to install them
 
-Step 2:
-Open the .env.development file
-in a text editor or a program like vscode and paste the following code:
+```
 
-"PGDATABASE=nc_news"
+```
 
-Step 3:
-In the same project directory folder, create a new file and call it:
+### Installing
 
-".env.test"
+A step by step series of examples that tell you how to get a development env running
 
-Step 4:
-In the .env.test file paste the following:
+Say what the step will be
 
-"PGDATABASE=nc_news_test"
+```
+Give the example
+```
 
-Step 5:
-**IMPORTANT:** You must add the .env file to your
-".gitignore" file.
-You can do this by opening your .gitignore file in a text editor like you did earlier and adding the following line:
+And repeat
 
-".env.\*"
+```
+until finished
+```
 
-Step 6:
+End with an example of getting some data out of the system or using it for a little demo
 
-In order for PGDATABASE to be recognized, you must install the pg module.
+## Running the tests
 
-The installation part is very simple as the package.json file already has the pg module typed up you just need to run the following command in the terminal:
+Explain how to run the automated tests for this system
 
-"npm install"
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+- [Maven](https://maven.apache.org/) - Dependency Management
+- [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+
+## Authors
+
+- **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
