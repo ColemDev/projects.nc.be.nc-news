@@ -1,5 +1,5 @@
-const cors = require("cors");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const {
   getApiEndpoints,
@@ -12,7 +12,9 @@ const {
   postCommentToArticle_id,
   deleteCommentById,
 } = require("./controllers/nc-news.controller");
+
 app.use(cors());
+
 app.use(express.json()); //parse section
 
 //CRUD
